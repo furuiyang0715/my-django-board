@@ -56,7 +56,10 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 设置模板文件放置的位置
+        # 所做的事情就是找到项目的完整路径并且在后面添加 “/templates”
+        # 注意 DIRS 的值是一个列表，否则会报错找不到模板文件
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

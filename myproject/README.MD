@@ -55,3 +55,19 @@ https://www.draw.io/
 
 （3）Python 附带了一个数据库 SQLIte 一个嵌入式的数据库引擎。 SQLite是一个产品级数据库。SQLite被许多公司用于成千上万的产品，
 如所有Android和iOS设备，主流的Web浏览器，Windows 10，MacOS等。
+
+(4) 在与 manage.py 同级的位置创建 templates 文件夹
+
+(5) 在 Python shell 中调试项目配置： 
+
+```
+from django.conf import settings
+
+settings.BASE_DIR
+'/Users/vitorfs/Development/myproject'
+
+import os
+
+os.path.join(settings.BASE_DIR, 'templates')
+'/Users/vitorfs/Development/myproject/templates'
+```
