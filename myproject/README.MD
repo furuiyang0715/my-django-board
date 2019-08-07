@@ -25,6 +25,15 @@ python manage.py migrate
 #### 执行 django 的测试套件 
 python manage.py test
 
+### 运行指定 app 内部的测试
+python manage.py test boards
+
+### 只运行指定的测试文件
+python manage.py test boards.tests.test_view_topic_posts
+
+### 只运行单个测试用例 
+python manage.py test boards.tests.test_view_topic_posts.TopicPostsTests.test_status_code
+
 #### 创建一个管理员账户
 python manage.py createsuperuser 
 
