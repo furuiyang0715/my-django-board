@@ -101,6 +101,40 @@ Django 提供了一些功能来帮助我们管理静态文件。
 (10) 使用 Django Admin的一个很好的例子就是用在博客中; 它可以被作者用来编写和发布文章。
 另一个例子是电子商务网站，工作人员可以创建，编辑，删除产品。
 
+(11) URL 调度器（dispatcher） 和 URLconf (URL configuration) 是 Django 应用中的基础部分。
+在开始的时候，这个看起来让人很困惑；我记得我第一次开始使用 Django 开发的时候也有一段时间学起来很困难。
+事实上，Django开发团队正在致力于将路由语法简化（译注：就是将原来url函数替换成 path 函数，
+目前django2.0已经正式使用新的路由语法）
 
+一个项目可以有很多 urls.py 分布在多个应用（app）中。Django 需要一个 url.py 作为入口。
+这个特殊的 urls.py 叫做 根路由配置（root URLconf）。它被定义在 settings.py 中。
+它已经自动配置好了，你不需要去改变它任何东西。
 
- 
+当 Django 接受一个请求(request)， 它就会在项目的 URLconf 中寻找匹配项。
+他从 urlpatterns 变量的第一条开始，然后在每个 url 中去匹配请求的 URL。
+
+如果 Django 找到了一个匹配路径，他会把请求(request)发送给 url 的第二个参数 视图函数（view function）。
+urlpatterns 中的顺序很重要，因为 Django 一旦找到匹配就会停止往后搜索。
+如果 Django 在 URLconf 中没有找到匹配项，他会通过 Page Not Found 的错误处理代码抛出一个 404 异常。
+
+ 这是 url 函数的剖析：
+```
+def url(regex, view, kwargs=None, name=None):
+    # ...
+```
+
+regex： 匹配 URL patterns 的正则表达式。注意：正则表达式会忽略掉 GET 或者 POST 后面的参数。
+在一个 http://127.0.0.1:8000/boards/?page=2 的请求中，只有 /boards/ 会被处理。
+
+view： 视图函数被用来处理用户请求，同时它还可以是 django.conf.urls.include 函数的返回值，
+它将引用一个外部的urls.py文件，例如，你可以使用它来定义一组特定于应用的 URLs，使用前缀将其包含在根 URLconf 中。
+
+kwargs：传递给目标视图函数的任意关键字参数，它通常用于在可重用视图上进行一些简单的定制，我们不是经常使用它。
+name:： 该 URL 的唯一标识符。这是一个非常重要的特征。要始终记得为你的 URLs 命名。
+所以，很重要的一点是：不要在 views(视图) 或者 templates(模板) 中硬编码 URL，而是通过它的名字去引用 URL。
+
+（12） PK or ID？ PK 表示主键（Primary key），这是访问模型的主键ID的简写方法，所有Django模型都有这个属性，
+更多的时候，使用pk属性和使用id是一样的，这是因为如果我们没有给model定义主键时，
+Django将自动创建一个 AutoField 类型的字段，名字叫做 id，它就是主键。
+如果你给model定义了一个不同的主键，例如，假设 email 是你的主键，
+你就可以这样访问：obj.email 或者 obj.pk，二者是等价的。

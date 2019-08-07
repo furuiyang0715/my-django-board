@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Django 需要一个 url.py 作为入口。这个特殊的 urls.py 叫做 根路由配置（root URLconf）
+# 它已经自动配置好了，你不需要去改变它任何东西。
 ROOT_URLCONF = 'myproject.urls'
 
 TEMPLATES = [
