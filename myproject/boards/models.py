@@ -11,6 +11,12 @@ class Board(models.Model):
         # 定义在交互模式中的显示
         return self.name
 
+    def get_posts_count(self):
+        return Post.objects.filter(topic__board=self).count()
+
+    def get_last_post(self):
+        return Post.objects.filter(topic__board=self).order_by('-created_at').first()
+
 
 class Topic(models.Model):
     subject = models.CharField(max_length=255)
@@ -28,7 +34,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True)
     created_by = models.ForeignKey(User, related_name='posts')
-    # 我们不需要关注用户修改过的帖子
+    # 不关注用户修改过的帖子
     updated_by = models.ForeignKey(User, null=True, related_name='+')
 
     def __str__(self):
