@@ -80,4 +80,18 @@ os.path.join(settings.BASE_DIR, 'templates')
 ```
 
 (6)在每个 app 的 tests 文件中编写单元测试
+
+(7) 什么是静态文件： 静态文件是指 CSS，JavaScript，字体，图片或者是用来组成用户界面的任何其他资源。
+
+实际上，Django 本身是不负责处理这些文件的，但是为了让我们的开发过程更轻松，
+Django 提供了一些功能来帮助我们管理静态文件。
+这些功能可在 INSTALLED_APPS 的 django.contrib.staticfiles 应用程序中找到
+（译者：Django为了使得开发方便，也可以处理静态文件，而在生产环境下，静态文件一般直接由 Nginx 等反向代理服务器处理，
+而应用工服务器专心负责处理它擅长的业务逻辑）。
+
+(8) 关于前端框架： 
+市面上很多优秀前端组件框架，我们没有理由继续用简陋的HTML文档来渲染】。
+我们可以轻松地将Bootstrap 4添加到我们的项目中。Bootstrap是一个用HTML，CSS和JavaScript开发的前端开源工具包。
+
+
  
