@@ -20,6 +20,13 @@ python manage.py sqlmigrate boards 0001
 #### 将生成的迁移文件应用到数据库 
 python manage.py migrate
 
+#### 执行 django 的测试套件 
+python manage.py test
+
+#### 在测试时显示更加详细的信息， 可将verbosity的级别设置得更高一点
+Verbosity决定了将要打印到控制台的通知和调试信息量; 0是无输出，1是正常输出，2是详细输出。
+python manage.py test --verbosity=2
+
 #### 使用 manage.py 工具加载项目启动 python shell
 python manage.py shell
 与直接输入 python 指定来调用交互控制台相似，除此之外，项目将被添加到 sys.path 并加载 Django。
@@ -71,3 +78,6 @@ import os
 os.path.join(settings.BASE_DIR, 'templates')
 '/Users/vitorfs/Development/myproject/templates'
 ```
+
+(6)在每个 app 的 tests 文件中编写单元测试
+ 
