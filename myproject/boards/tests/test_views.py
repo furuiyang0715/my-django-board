@@ -5,7 +5,7 @@ from django.test import TestCase
 
 from boards.forms import NewTopicForm
 from boards.models import Board, Topic, Post
-from .views import home, new_topic
+from boards.views import home, new_topic
 
 
 class HomeTests(TestCase):
