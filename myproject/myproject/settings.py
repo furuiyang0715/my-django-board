@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'widget_tweaks',   # 一个静态文件渲染库
 
     'boards',  # 将我们自己的 app 进行注册
+    'accounts',  # 与身份认证相关的应用
 ]
 
 MIDDLEWARE = [
