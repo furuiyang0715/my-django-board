@@ -2,12 +2,16 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from boards import views
-from accounts import views as accounts_views
 from django.contrib.auth import views as auth_views
+from accounts import views as accounts_views
 
 urlpatterns = [
     # url(r'^$', views.home, name='home'),
     url(r'^$', views.BoardListView.as_view(), name='home'),
+
+    # 个人账户
+    url(r'^settings/account/$', accounts_views.UserUpdateView.as_view(), name='my_account'),
+
     # 用户注册
     url(r'^signup/$', accounts_views.signup, name='signup'),
     # 用户登录
