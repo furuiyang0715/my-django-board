@@ -139,3 +139,5 @@ STATICFILES_DIRS = [
 LOGOUT_REDIRECT_URL = 'home'
 # 用户登录后默认跳帧的地方
 LOGIN_REDIRECT_URL = 'home'
+# 有关于邮件的配置
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
