@@ -57,6 +57,8 @@ Board.objects.get(name='django')
 http://staruml.io/
 ### 绘制网页线框的工具 
 https://www.draw.io/
+### 寻找一些比较好用的背景图 
+https://www.toptal.com/designers/subtlepatterns/ 
 
 ### 其他说明
 （1） User 模型被命名为内置应用叫 auth，它以命名空间 django.contrib.auth 的形式出现在 INSTALLED_APPS 配置中。
@@ -149,3 +151,5 @@ Django将自动创建一个 AutoField 类型的字段，名字叫做 id，它就
 (15) 接下来要创建 django 的用户身份识别系统，实现注册、登录、注销、密码重置和密码修改的整套流程。
 所有身份认证相关的内容都将在另一个应用中，这样能更良好的组织代码。 
 django-admin startapp accounts
+
+
