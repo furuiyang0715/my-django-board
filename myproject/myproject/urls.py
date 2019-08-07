@@ -21,6 +21,9 @@ urlpatterns = [
     # pk用于唯一标识版块（Board），topic_pk用于唯一标识该回复来自哪个主题
     url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/$', views.topic_posts, name='topic_posts'),
 
+    # 回复主题
+    url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/reply/$', views.reply_topic, name='reply_topic'),
+
     # 与重置密码相关的一系列视图均是内置的
     url(r'^reset/$',
         auth_views.PasswordResetView.as_view(
