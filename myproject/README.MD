@@ -23,6 +23,9 @@ python manage.py migrate
 #### 执行 django 的测试套件 
 python manage.py test
 
+#### 创建一个管理员账户
+python manage.py createsuperuser 
+
 #### 在测试时显示更加详细的信息， 可将verbosity的级别设置得更高一点
 Verbosity决定了将要打印到控制台的通知和调试信息量; 0是无输出，1是正常输出，2是详细输出。
 python manage.py test --verbosity=2
@@ -92,6 +95,12 @@ Django 提供了一些功能来帮助我们管理静态文件。
 (8) 关于前端框架： 
 市面上很多优秀前端组件框架，我们没有理由继续用简陋的HTML文档来渲染】。
 我们可以轻松地将Bootstrap 4添加到我们的项目中。Bootstrap是一个用HTML，CSS和JavaScript开发的前端开源工具包。
+
+(9) 在使用管理后台之前我们一直使用 shell 来添加内容。 
+
+(10) 使用 Django Admin的一个很好的例子就是用在博客中; 它可以被作者用来编写和发布文章。
+另一个例子是电子商务网站，工作人员可以创建，编辑，删除产品。
+
 
 
  
