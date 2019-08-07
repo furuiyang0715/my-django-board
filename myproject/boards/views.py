@@ -2,9 +2,38 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from django.utils.decorators import method_decorator
+from django.views.generic import UpdateView
 
 from boards.forms import NewTopicForm, PostForm
 from .models import Board, Topic, Post
+
+
+@method_decorator(login_required, name='dispatch')
+class PostUpdateView(UpdateView):
+    model = Post
+    fields = ('message', )
+    template_name = 'edit_post.html'
+    pk_url_kwarg = 'post_pk'
+    context_object_name = 'post'
+
+    def get_queryset(self):
+        """
+        通过这一行 queryset = super().get_queryset(), 我们实现了重用父类，
+        即，UpateView 类的 get_queryset 方法。然后，我们通过给 queryset 添加一个额外的过滤条件，
+        该过滤条件是通过请求中获取登录的用户来过滤内容。
+        :return:
+        """
+        queryset = super().get_queryset()
+        return queryset.filter(created_by=self.request.user)
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.updated_by = self.request.user
+        post.updated_at = timezone.now()
+        post.save()
+        return redirect('topic_posts', pk=post.topic.board.pk, topic_pk=post.topic.pk)
 
 
 def home(request):

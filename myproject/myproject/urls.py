@@ -24,6 +24,10 @@ urlpatterns = [
     # 回复主题
     url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/reply/$', views.reply_topic, name='reply_topic'),
 
+    # 编辑回复
+    url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/posts/(?P<post_pk>\d+)/edit/$',
+        views.PostUpdateView.as_view(), name='edit_post'),
+
     # 与重置密码相关的一系列视图均是内置的
     url(r'^reset/$',
         auth_views.PasswordResetView.as_view(
