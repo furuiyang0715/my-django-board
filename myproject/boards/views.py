@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models import Count
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -12,8 +13,11 @@ def home(request):
 
 
 def board_topics(request, pk):
-    board = Board.objects.get(pk=pk)
-    return render(request, 'topics.html', {'board': board})
+    board = get_object_or_404(Board, pk=pk)
+    # 使用annotate ，QuerySet将即时生成一个新的列，这个新的列，将被翻译成一个属性，
+    # 可通过 topic.replies来访问，它包含了指定主题下的回复数
+    topics = board.topics.order_by('-last_updated').annotate(replies=Count('posts') - 1)
+    return render(request, 'topics.html', {'board': board, 'topics': topics})
 
 
 @login_required
