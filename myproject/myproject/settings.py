@@ -141,3 +141,5 @@ LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 # 有关于邮件的配置
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# 定义应用程序的登录 url
+LOGIN_URL = 'login'

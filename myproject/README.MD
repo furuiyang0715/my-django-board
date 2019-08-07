@@ -1,5 +1,7 @@
 ### 项目链接
 https://github.com/pythonzhichan/django-beginners-guide
+### 相关的代码仓库链接
+https://github.com/sibtc/django-beginners-guide/tree/v0.4-lw
 
 ### Django 常用的命令
 ####  启动一个新项目 
