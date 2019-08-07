@@ -137,3 +137,5 @@ STATICFILES_DIRS = [
 
 # 用户注销之后将会跳转的地址
 LOGOUT_REDIRECT_URL = 'home'
+# 用户登录后默认跳帧的地方
+LOGIN_REDIRECT_URL = 'home'
