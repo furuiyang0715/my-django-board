@@ -138,3 +138,11 @@ name:： 该 URL 的唯一标识符。这是一个非常重要的特征。要始
 Django将自动创建一个 AutoField 类型的字段，名字叫做 id，它就是主键。
 如果你给model定义了一个不同的主键，例如，假设 email 是你的主键，
 你就可以这样访问：obj.email 或者 obj.pk，二者是等价的。
+
+(13) 关于表单： Forms(表单) 用来处理我们的输入。这在任何 web 应用或者网站中都是很常见的任务。
+标准的做法是通过 HTML 表单实现，用户输入一些数据，将其提交给服务器，然后服务器处理它。
+
+(14) Django 使用 CSRF Token(Cross-Site Request Forgery Token) 保护所有的 POST 请求。
+这是一个避免外部站点或者应用程序向我们的应用程序提交数据的安全措施。应用程序每次接收一个 POST 时，
+都会先检查 CSRF Token。如果这个 request 没有 token，或者这个 token是无效的，它就会抛弃提交的数据。
+

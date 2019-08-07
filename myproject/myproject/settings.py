@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',  # 静态文件管理
 
+    'widget_tweaks',   # 一个静态文件渲染库
+
     'boards',  # 将我们自己的 app 进行注册
 ]
 
