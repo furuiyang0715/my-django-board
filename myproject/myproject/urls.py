@@ -6,7 +6,8 @@ from accounts import views as accounts_views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    # url(r'^$', views.home, name='home'),
+    url(r'^$', views.BoardListView.as_view(), name='home'),
     # 用户注册
     url(r'^signup/$', accounts_views.signup, name='signup'),
     # 用户登录
