@@ -17,7 +17,11 @@ urlpatterns = [
     url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
     url(r'^admin/', admin.site.urls),
 
-    # 与重置密码相关的一系列视图均是内置的 ...
+    # 查看回复与评论详情的路由
+    # pk用于唯一标识版块（Board），topic_pk用于唯一标识该回复来自哪个主题
+    url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/$', views.topic_posts, name='topic_posts'),
+
+    # 与重置密码相关的一系列视图均是内置的
     url(r'^reset/$',
         auth_views.PasswordResetView.as_view(
             template_name='password_reset.html',
