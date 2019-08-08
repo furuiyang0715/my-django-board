@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, ListView
@@ -140,13 +140,6 @@ class PostListView(ListView):
 
 @login_required
 def reply_topic(request, pk, topic_pk):
-    """
-    针对话题 topic 的回帖 posts 逻辑
-    :param request:
-    :param pk:
-    :param topic_pk:
-    :return:
-    """
     topic = get_object_or_404(Topic, board__pk=pk, pk=topic_pk)
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -156,11 +149,17 @@ def reply_topic(request, pk, topic_pk):
             post.created_by = request.user
             post.save()
 
-            # 更新话题的最新回复时间
             topic.last_updated = timezone.now()
             topic.save()
 
-        return redirect('topic_posts', pk=pk, topic_pk=topic_pk)
+            topic_url = reverse('topic_posts', kwargs={'pk': pk, 'topic_pk': topic_pk})
+            topic_post_url = '{url}?page={page}#{id}'.format(
+                url=topic_url,
+                id=post.pk,
+                page=topic.get_page_count()
+            )
+
+            return redirect(topic_post_url)
     else:
         form = PostForm()
     return render(request, 'reply_topic.html', {'topic': topic, 'form': form})
