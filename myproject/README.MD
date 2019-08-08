@@ -20,11 +20,17 @@ django-admin startapp boards
 ####  迁移模型 
 python manage.py makemigrations
 
+#### 迁移某个模块的模型 
+python manage.py makemigrations boards
+
 #### 检验迁移生成的 sql 语句
 python manage.py sqlmigrate boards 0001
 
 #### 将生成的迁移文件应用到数据库 
 python manage.py migrate
+
+#### 收集静态文件 
+python manage.py collectstatic
 
 #### 执行 django 的测试套件 
 python manage.py test

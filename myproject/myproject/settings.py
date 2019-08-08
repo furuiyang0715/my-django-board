@@ -135,6 +135,8 @@ STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'static'),
 ]
 
+STATIC_ROOT = "/Users/furuiyang/codes/Development/static"
+
 
 # 用户注销之后将会跳转的地址
 LOGOUT_REDIRECT_URL = 'home'
