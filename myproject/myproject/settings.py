@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',  # 静态文件管理
 
     'widget_tweaks',   # 一个静态文件渲染库
+    'django.contrib.humanize',  # 进行数据的人性化设置
 
     'boards',  # 将我们自己的 app 进行注册
     'accounts',  # 与身份认证相关的应用
