@@ -70,6 +70,8 @@ http://staruml.io/
 https://www.draw.io/
 ### 寻找一些比较好用的背景图 
 https://www.toptal.com/designers/subtlepatterns/ 
+### 用户头像生成库 
+https://en.gravatar.com/
 
 ### 其他说明
 （1） User 模型被命名为内置应用叫 auth，它以命名空间 django.contrib.auth 的形式出现在 INSTALLED_APPS 配置中。
