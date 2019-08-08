@@ -149,7 +149,12 @@ def reply_topic(request, pk, topic_pk):
             post.topic = topic
             post.created_by = request.user
             post.save()
-            return redirect('topic_posts', pk=pk, topic_pk=topic_pk)
+
+            # 更新话题的最新回复时间
+            topic.last_updated = timezone.now()
+            topic.save()
+
+        return redirect('topic_posts', pk=pk, topic_pk=topic_pk)
     else:
         form = PostForm()
     return render(request, 'reply_topic.html', {'topic': topic, 'form': form})
